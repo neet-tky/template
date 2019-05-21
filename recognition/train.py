@@ -4,7 +4,7 @@ import argparse
 
 import torch
 from torch import nn, optim
-from torch.utils import tensorboard
+import torch.utils.tensorboard as tensorboard
 
 from torch.utils.data import DataLoader, Dataset
 from torchvision import transforms
@@ -40,11 +40,7 @@ def valid():
             x, y = x.to(device), y.to(device)
 
             pred_y = model(x)
-            loss =criterion(pred_y, y)
-
-            model.zero_grad()
-            loss.backward()
-            optimizer.step()
+            loss = criterion(pred_y, y)
 
             # loss, acc
             _, predicted = torch.max(pred_y, 1)
@@ -63,16 +59,25 @@ def test():
             pred_y = model(x)
             loss = criterion(pred_y, y)
 
-            model.zero_grad()
-            loss.backward()
-            optimizer.step()
-
             # loss, acc
             _, predicted = torch.max(pred_y, 1)
             for t, p in zip(y.view(-1), predicted.view(-1)):
                 confusion_matrix[t.long(), p.long()] += 1
 
     return confusion_matrix
+
+def init_weight(model):
+    for m in model.modules():
+        if isinstance(m, nn.Conv2d):
+            nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+
+            if m.bias is not None:
+                nn.init.constant_(m.bias, 0)
+
+        elif isinstance(m, nn.Linear):
+            nn.init.normal_(m.weight, 0, .01)
+            nn.init.constant_(m.bias, 0)
+
 
 def param_decay(epoch):
     if epoch < 100:
@@ -106,13 +111,13 @@ if __name__=='__main__':
         transforms.RandomCrop(args.size, padding=4),
         transforms.RandomHorizontalFlip(),
         transforms.ToTensor(),
-        #transforms.Normalize((.5, .5, .5), (.5, .5, .5))
+        transforms.Normalize((.5, .5, .5), (.5, .5, .5))
     ])
 
     val_prepro = transforms.Compose([
         transforms.Resize((args.size, args.size)),
         transforms.ToTensor(),
-        #transforms.Normalize((.5, .5, .5), (.5, .5, .5))
+        transforms.Normalize((.5, .5, .5), (.5, .5, .5))
     ])
 
     trainset = CIFAR.CIFAR10(root='~/Datasets/', train=True, transform=prepro, target_transform=None, download=True)
@@ -136,7 +141,7 @@ if __name__=='__main__':
         model.load_state_dict(weights)
 
     else:
-        # init_weights
+        model.apply(init_weight)
         max_loss = math.inf
         start = 0
 
