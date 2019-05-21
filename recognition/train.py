@@ -25,7 +25,7 @@ def train():
         optimizer.step()
 
         # loss, acc
-        _, predicted = torch.max(pred_y)
+        _, predicted = torch.max(pred_y, 1)
         correct += (y == predicted).sum().item()
 
         losses += loss.item()
@@ -47,7 +47,7 @@ def valid():
             optimizer.step()
 
             # loss, acc
-            _, predicted = torch.max(pred_y)
+            _, predicted = torch.max(pred_y, 1)
             correct += (predicted == y).sum().item()
 
             losses += loss.item()
@@ -68,7 +68,7 @@ def test():
             optimizer.step()
 
             # loss, acc
-            _, predicted = torch.max(pred_y)
+            _, predicted = torch.max(pred_y, 1)
             for t, p in zip(y.view(-1), predicted.view(-1)):
                 confusion_matrix[t.long(), p.long()] += 1
 
@@ -124,7 +124,9 @@ if __name__=='__main__':
     len_train = len(trainset)
     len_test = len(testset)
 
-    model = vgg.vgg16()
+    model = vgg.vgg16(pretrained=False)
+    num_ftrs = model.classifier[6].in_features
+    model.classifier[6] = nn.Linear(num_ftrs, args.class_num)
 
     if args.load is not None:
         checkpoints = torch.load(args.load)
@@ -137,6 +139,7 @@ if __name__=='__main__':
         # init_weights
         max_loss = math.inf
         start = 0
+
 
     model = model.to(device)
     criterion = nn.CrossEntropyLoss()
