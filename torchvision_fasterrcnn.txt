@@ -1,0 +1,81 @@
+# torchvision fasterrcnn 読み込み
+	
+boxes = box_ops.clip_boxes_to_image(boxes, img_shape)  # 矩形領域の超過調整
+keep = box_ops.remove_small_boxes(boxes, self.min_size) # min_size以下のbboxesのindex判定
+boxes, scores, lvl = boxes[keep], scores[keep], lvl[keep] # min_size以下除去
+
+# non-maximum suppression, independently done per level
+keep = box_ops.batched_nms(boxes, scores, lvl, self.nms_thresh)
+            
+# keep only topk scoring predictions
+keep = keep[:self.post_nms_top_n]
+boxes, scores = boxes[keep], scores[keep]
+final_boxes.append(boxes)
+final_scores.append(scores)
+
+## rpnの動作
+Inputs: features maps
+Outputs: losses, boxes
+
+# concat_box_predicition_layers
+- box_cls, box_regression: 各層ごとの結果
+- zip使って，box_cls, box_regressionと同階層でloop
+- shapeを抽出, Anchor, Class数も
+- permute_and_flatten関数により, Tensorを(N, H, W, A, C or 4)に変換
+- y.append(x)
+- yのTensorを[N, HxWxA, C or 4]にflat化
+
+# assign_target_to_anchors
+- zipでimage(batch)毎のanchorとgtを全探索
+- match_quality_matrix生成(anchor, gtのIoU overlap行列)
+- matcherに投げる: match_idxsが帰ってくる
+    - ow_IoU, High_Iou, Between_IoUの判定, low_IoU, Betweenは学習対象外(negative, hard_negative)
+- match_idxs使いanchorboxの中から，gt_boxを生成[0以上のもの]
+- match_idxを使って，gt_box, labelsの場合分け
+    - Negative labels = 0(background), Hard Negative labels = -1
+- Image毎だったので，listにappendして返す
+
+# rpn Flow
+- Features maps をRPN_headに入力
+- 階層毎のanchorbox分のobjectnessとbbox[1:4]を出力
+- anchors生成 全てのFeatures MAPに対する矩形を見つける
+- 階層毎のanchor数を保持
+- Objectnessとbboxをflat化 [N, HxWxA, C or 4]の形に置換
+- bboxにanchorboxを適用し，候補領域(proposal)を生成
+- proposalを[N, HxWxA, 4]に置換
+- Proposalの矩形領域をフィルタリング(clip, small reject, nms)
+- targetからlabel[0, 1]とgt_box生成: assign_targets_to_anchors
+- gt_boxとanchorboxからtarget_regressionを作成
+    - target_regression: anchorboxとgt_boxの偏差量(dcx, dcy, dw. dh)
+    - gt_box: target_bboxにオーバラップしているanchorbox情報
+
+
+# 所感
+## 学習時
+- target_bbox -> gt_box -> target_regressionへの変換が必要
+- classificationと同様に, bbox, classを, [N, H, W, A, C or 4] -> [N, HxWxA, C or 4]へflat化する
+
+## 推論時
+- pred_bbox_delta -> bboxに変換
+- bboxにフィルタ処理が必要: clamp, small_bbox reject, nms
+
+# 必要な処理は？
+## 学習時
+- architecture: feedforward処理
+    - backbone, Features MAPs(class, pred_bbox_deltasの推定層)
+    - 推論後に, Tensorを[N, HxWxA, C or 4]に変換
+- anchorbox: サイズ生成
+    - aspect比, scale比，サイズから各Features MAPsのneuron毎に用意
+- gt_box: target_bboxとanchorboxから生成
+    - box_iou: target_bboxとanchorboxのjaccardを確認
+    - Jaccard係数から条件が満たさないものは削除
+- target_regression: 
+    - gt_boxとanchorboxから偏差を求める
+- loss計算: target_regressionとpred_bbox_deltas 
+    - L1smooth, L2normとかでいいはず
+
+## 推論時
+- pred_bbox_delta -> bboxに変換: anchorboxを使用
+    - decode処理
+    - 場合によっては，.detach処理
+- bboxにフィルタ処理が必要: clamp, small_bbox reject, nms

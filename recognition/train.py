@@ -187,3 +187,4 @@ if __name__=='__main__':
     conmat = test()
     torch.save(model.state_dict(), args.fmodel + '.pth')
     np.savetxt(args.fmodel + 'conf_mat.txt', np.array(conmat), fmt='%s', delimiter=',')
+

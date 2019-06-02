@@ -1,0 +1,24 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+torch = "*"
+torchvision = "*"
+opencv-python = "*"
+jupyter = "*"
+notebook = "*"
+tensorboardx = "*"
+pandas = "*"
+matplotlib = "*"
+tensorboard = "*"
+future = "*"
+tb-nightly = "*"
+google-api-python-client = "*"
+pydrive = "*"
+
+[requires]
+python_version = "3.6"
