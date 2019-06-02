@@ -2,25 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d144d3f9-422a-4f76-aa0b-392bfab42bac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/model/_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/detect.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/l2norm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/multiloss.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/ssd.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../recognition/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../recognition/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../recognition/.idea/recognition.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../recognition/.idea/recognition.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../recognition/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../recognition/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../recognition/runs/May21_23-50-43_neet-tky.local/events.out.tfevents.1558450243.neet-tky.local.15432.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../recognition/runs/May21_23-51-16_neet-tky.local/events.out.tfevents.1558450276.neet-tky.local.15446.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../recognition/runs/May22_00-32-56_neet-tky.local/events.out.tfevents.1558452776.neet-tky.local.15464.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../recognition/runs/May22_00-36-02_neet-tky.local/events.out.tfevents.1558452962.neet-tky.local.15565.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../recognition/runs/May22_00-42-04_neet-tky.local/events.out.tfevents.1558453324.neet-tky.local.15683.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../recognition/runs/May22_00-42-42_neet-tky.local/events.out.tfevents.1558453362.neet-tky.local.15697.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../recognition/runs/May22_00-44-11_neet-tky.local/events.out.tfevents.1558453451.neet-tky.local.15713.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../recognition/runs/May22_00-55-23_neet-tky.local/events.out.tfevents.1558454123.neet-tky.local.15819.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../recognition/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/../recognition/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssd/detect.py" beforeDir="false" afterPath="$PROJECT_DIR$/ssd/detect.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +15,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-646">
+            <state relative-caret-position="120">
               <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -42,79 +24,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/ssd.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-                <element signature="e#180#1528#0" />
-                <element signature="e#280#413#0" />
-                <element signature="e#323#1034#0" />
-                <element signature="e#355#2001#0" />
-                <element signature="e#2103#2726#0" />
-                <element signature="e#2976#3430#0" />
-                <element signature="e#3486#4138#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/multiloss.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-                <element signature="e#141#3830#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/l2norm.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/model/detect.py">
+        <entry file="file://$PROJECT_DIR$/ssd/detect.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+            <state relative-caret-position="330">
+              <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/config.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -158,6 +75,7 @@
         <option value="$PROJECT_DIR$/model/multiloss.py" />
         <option value="$PROJECT_DIR$/model/_utils.py" />
         <option value="$PROJECT_DIR$/model/detect.py" />
+        <option value="$PROJECT_DIR$/ssd/detect.py" />
       </list>
     </option>
   </component>
@@ -171,7 +89,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="877" />
@@ -194,7 +112,7 @@
             <path>
               <item name="detection" type="b2602c69:ProjectViewProjectNode" />
               <item name="detection" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="ssd" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="detection" type="b2602c69:ProjectViewProjectNode" />
@@ -209,6 +127,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -356,7 +275,7 @@
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11087268" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11230329" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -378,43 +297,17 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ssd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/model.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/ssd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#180#1528#0" />
-            <element signature="e#280#413#0" />
-            <element signature="e#323#1034#0" />
-            <element signature="e#355#2001#0" />
-            <element signature="e#2103#2726#0" />
-            <element signature="e#2976#3430#0" />
-            <element signature="e#3486#4138#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ssd.py" />
+    <entry file="file://$PROJECT_DIR$/model/model.py" />
+    <entry file="file://$PROJECT_DIR$/model/config.py" />
+    <entry file="file://$PROJECT_DIR$/model/ssd.py" />
+    <entry file="file://$PROJECT_DIR$/model/multiloss.py" />
+    <entry file="file://$PROJECT_DIR$/model/_utils.py" />
+    <entry file="file://$PROJECT_DIR$/model/l2norm.py" />
+    <entry file="file://$PROJECT_DIR$/model/detect.py" />
     <entry file="file://$PROJECT_DIR$/dataset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-646">
+        <state relative-caret-position="120">
           <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -422,41 +315,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/multiloss.py">
+    <entry file="file://$PROJECT_DIR$/ssd/detect.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#141#3830#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/l2norm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/detect.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+        <state relative-caret-position="330">
+          <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
