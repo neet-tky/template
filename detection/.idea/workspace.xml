@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d144d3f9-422a-4f76-aa0b-392bfab42bac" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/transform/augmentation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transform/transform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/sample_set-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/sample_set-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/dataset.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_set.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/sample_set.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssd/_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssd/config.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ssd/detect.py" beforeDir="false" afterPath="$PROJECT_DIR$/ssd/detect.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssd/multiloss.py" beforeDir="false" afterPath="$PROJECT_DIR$/ssd/multiloss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssd/ssd.py" beforeDir="false" afterPath="$PROJECT_DIR$/ssd/ssd.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,26 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataset.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ssd/detect.py">
+        <entry file="file://$PROJECT_DIR$/ssd/multiloss.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="35" column="29" lean-forward="true" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1087">
+              <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -56,6 +52,10 @@
       <find>print</find>
       <find>enco</find>
       <find>reference_boxes</find>
+      <find>num_classes</find>
+      <find>top_k</find>
+      <find>[i]</find>
+      <find>nms</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -76,16 +76,9 @@
         <option value="$PROJECT_DIR$/model/_utils.py" />
         <option value="$PROJECT_DIR$/model/detect.py" />
         <option value="$PROJECT_DIR$/ssd/detect.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/detection.iml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" />
+        <option value="$PROJECT_DIR$/transform/transform.py" />
+        <option value="$PROJECT_DIR$/transform/augmentation.py" />
+        <option value="$PROJECT_DIR$/ssd/multiloss.py" />
       </list>
     </option>
   </component>
@@ -111,11 +104,6 @@
             </path>
             <path>
               <item name="detection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="detection" type="462c0819:PsiDirectoryNode" />
-              <item name="ssd" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="detection" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -133,6 +121,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dataset" />
       <recent name="$PROJECT_DIR$/model" />
     </key>
   </component>
@@ -148,7 +137,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.multiloss">
+  <component name="RunManager" selected="Python.multiloss (1)">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="detection" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -182,7 +171,49 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataset.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataset/dataset.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="detect" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="detection" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ssd" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ssd/detect.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="multiloss (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="detection" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ssd" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ssd/multiloss.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -252,6 +283,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.multiloss (1)" />
+        <item itemvalue="Python.detect" />
         <item itemvalue="Python.multiloss" />
         <item itemvalue="Python.ssd" />
         <item itemvalue="Python.dataset" />
@@ -272,15 +305,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11230329" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1137339" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.3299363" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.3299363" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -305,7 +337,17 @@
     <entry file="file://$PROJECT_DIR$/model/_utils.py" />
     <entry file="file://$PROJECT_DIR$/model/l2norm.py" />
     <entry file="file://$PROJECT_DIR$/model/detect.py" />
-    <entry file="file://$PROJECT_DIR$/dataset.py">
+    <entry file="file://$PROJECT_DIR$/ssd/detect.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="44" column="16" lean-forward="true" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/dataset.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
@@ -315,13 +357,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ssd/detect.py">
+    <entry file="file://$PROJECT_DIR$/transform/augmentation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="35" column="29" lean-forward="true" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+        <state relative-caret-position="6255">
+          <caret line="417" selection-start-line="417" selection-end-line="417" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/transform/transform.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="31" column="28" lean-forward="true" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssd/multiloss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1087">
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
         </state>
       </provider>
     </entry>

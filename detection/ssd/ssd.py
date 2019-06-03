@@ -5,8 +5,8 @@ import torch
 import torch.nn.functional as F
 from torch import nn
 
-from config import *
-from l2norm import *
+from dataset.config import *
+from .l2norm import *
 
 class AnchorGenerator(nn.Module):
     def __init__(self, cfg):
@@ -76,7 +76,7 @@ def concat_box_prediction_layers(conf_box, loc_box):
         #if fpn
         box_cls_per_lebel = permute_flatten(box_cls_per_lebel, N, A, C, H, W)
         box_loc_per_lebel = permute_flatten(box_loc_per_lebel, N, A, 4, H ,W)
-        print(box_cls_per_lebel.shape, box_loc_per_lebel.shape)
+#        print(box_cls_per_lebel.shape, box_loc_per_lebel.shape)
         box_cls_flattened.append(box_cls_per_lebel)
         box_loc_flattened.append(box_loc_per_lebel)
 
@@ -90,7 +90,7 @@ class SSD(nn.Module):
         super(SSD, self).__init__()
 
         # model
-        self.backborn = nn.ModuleList(vgg)
+        self.backbone = nn.ModuleList(vgg)
         self.L2Norm = L2Norm(512, 20)
         self.extras = nn.ModuleList(extras)
         self.loc_delta = nn.ModuleList(head[0])
@@ -108,9 +108,6 @@ class SSD(nn.Module):
             self.detect = Detect(class_num, 0, 200, .01, .45)
             # num_anchor = 200, pos_neg = .01, nms = .45
 
-    def filter_proposals(self, proposals, conf):
-        pass
-
     def forward(self, img):
         # variables
         x = img
@@ -119,12 +116,12 @@ class SSD(nn.Module):
 
         # feedforward
         for i in range(self.f4_2):
-            x = self.backborn[i](x)
+            x = self.backbone[i](x)
         x = self.L2Norm(x)
         features.append(x)
 
-        for i in range(self.f4_2, len(self.backborn)):
-            x = self.backborn[i](x)
+        for i in range(self.f4_2, len(self.backbone)):
+            x = self.backbone[i](x)
         features.append(x)
 
         for k, v in enumerate(self.extras):
@@ -135,7 +132,7 @@ class SSD(nn.Module):
 
         # gene feature MAPs
         for f, l, c in zip(features, self.loc_delta, self.conf):
-            print(f.shape)
+#            print(f.shape)
             loc_delta.append((l(f)))
             conf.append(c(f))
 
@@ -199,9 +196,9 @@ def add_extras(base, i, batch_norm=False):
 
 def multibox(vgg, extra_layers, cfg, num_class):
     loc, conf = [], []
-    backborn_multi = [21, -2]
+    backbone_multi = [21, -2]
 
-    for k, v in enumerate(backborn_multi):
+    for k, v in enumerate(backbone_multi):
         loc += [ nn.Conv2d(in_channels=vgg[v].out_channels, out_channels=cfg[k] * 4, kernel_size=3, padding=1) ]
         conf += [ nn.Conv2d(in_channels=vgg[v].out_channels, out_channels=cfg[k] * num_class, kernel_size=3, padding=1)]
 

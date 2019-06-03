@@ -2,11 +2,10 @@ import torch
 from torch import nn
 
 from torchvision.ops import boxes as box_ops
-
-import _utils as det_utils
+from .utils import *
 
 class MultiLoss(nn.Module):
-    def __init__(self, num_classes=21, high_threshold=.9, low_threshold=.3, variances=[.1, .2], negpos_ratio=3, device='cpu'):
+    def __init__(self, num_classes=21, high_threshold=.7, low_threshold=.3, variances=[.1, .2], negpos_ratio=3, device='cpu'):
         super(MultiLoss, self).__init__()
         self.num_classes = num_classes
         self.negapos_ratio = negpos_ratio
@@ -14,36 +13,28 @@ class MultiLoss(nn.Module):
         self.variances = variances
 
         self.box_similarity = box_ops.box_iou
-        self.proposal_matcher = det_utils.Matcher(high_threshold, low_threshold, True)
+        self.proposal_matcher = Matcher(high_threshold, low_threshold, True)
 
         self.cross_entropy = nn.CrossEntropyLoss(reduction='none')
         self.l1 = nn.SmoothL1Loss()
 
     def assign_targets_to_anchors(self, anchors, targets):
-        gt_labels = targets['labels']
-        gt_boxes = targets['boxes']
-
-
-        ## ここあとで消す
-        gt_boxes[:, :, 2:] += gt_boxes[:, :, :2]
-        anchors[:, 2:] += anchors[:, :2]
-
-        batch_num = gt_boxes.shape[0]
+        batch_num = len(targets)
         anchors_num = anchors.shape[0]
 
         matched_gt_boxes = torch.FloatTensor(batch_num, anchors_num, 4)
         matched_gt_labels = torch.LongTensor(batch_num, anchors_num)
 
-        for num in range(batch_num):
-            truths = gt_boxes[num][:, :]
-            labels = gt_labels[num]
+        for num, target in enumerate(targets):
+            truths = target['boxes']
+            labels = target['labels']
 
             match_quality_matrix = self.box_similarity(truths, anchors)
             matched_ind = self.proposal_matcher(match_quality_matrix)
 
             # match_gt_box is gene
             matched_gt_boxes_per_batch = truths[matched_ind.clamp(min=0)]
-            matched_gt_boxes_per_batch = det_utils.encode(matched_gt_boxes_per_batch, anchors, self.variances)
+            matched_gt_boxes_per_batch = encode(matched_gt_boxes_per_batch, anchors, self.variances)
 
             # match_gt_labels is gene
             bg_ind = matched_ind < 0
@@ -106,9 +97,9 @@ if __name__=='__main__':
         torch.FloatTensor(20, 4).random_(0, 200) / 200
     ]
 
-    targets = {
-       'boxes': torch.FloatTensor(10, 12, 4).random_(0, 200) / 200,
-       'labels':  torch.LongTensor(10, 12).random_(1, 21),
-    }
+    targets = [{
+       'boxes': torch.FloatTensor(12, 4).random_(0, 200) / 200,
+       'labels':  torch.LongTensor(12).random_(1, 21),
+    } for i in range(10)]
 
     loss = MultiLoss().forward(preds, targets)

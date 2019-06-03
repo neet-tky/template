@@ -53,4 +53,11 @@ def encode(matched, anchors, variances):
     return torch.cat([g_cxcy, g_wh], 1)
 
 def decode(matched, anchors, variances):
-    pass
+    boxes = torch.cat((
+        anchors[:, :2] + matched[:, :2] * variances[0] * anchors[:, 2:],
+        anchors[:, 2:] * torch.exp(matched[:, 2:] * variances[1])), 1)
+    
+    boxes[:, :2] -= boxes[:, 2:] / 2
+    boxes[:, 2:] += boxes[:, :2]
+    
+    return boxes
